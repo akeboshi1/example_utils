@@ -1,0 +1,5 @@
+{
+    "name": "example_utils",
+    "main": "types/index.d.ts",
+    "out": "../dist/types/main.d.ts"
+}
