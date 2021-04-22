@@ -1,7 +1,11 @@
 const path = require("path")
 module.exports = {
     mode: "development",
-    entry: "./src/public_api.ts",
+    entry: {
+        index: "./src/index.ts",
+        math: "./src/modules/math/index.ts",
+        time: "./src/modules/time/index.ts"
+    },
     output: {
         filename: "js/[name].js",
         chunkFilename: `js/[name].js`,

@@ -1,9 +1,22 @@
 {
   "name": "example_utils",
   "version": "1.0.0",
-  "main": "./main.js",
-  "module": "./module.js",
-  "types": "./types/main.d.ts",
+  "exports": {
+    ".": "./dist/js/index.js",
+    "./math": "./dist/js/math.js",
+    "./time": "./dist/js/time.js"
+  },
+  "types": "dist-types/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "math": [
+        "dist-types/modules/math"
+      ],
+      "time": [
+        "dist-types/modules/time"
+      ]
+    }
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.13.16",
@@ -12,6 +25,7 @@
     "@rollup/plugin-node-resolve": "^11.2.1",
     "dts-bundle": "^0.7.3",
     "path": "^0.12.7",
+    "rimraf": "^3.0.2",
     "rollup": "^2.45.2",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-uglify": "^6.0.4",
@@ -21,7 +35,7 @@
     "webpack-cli": "^4.6.0"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.js",
+    "build": "rimraf dist && rimraf dist-types && webpack --config webpack.config.js",
     "rollup": "rollup -c ./rollup.config.dev.js",
     "rollup:build": "rollup -c ./rollup.config.prod.js",
     "dts": "dts-bundle --configJson dts-bundle.json"
